@@ -20,8 +20,8 @@ public enum JellyType {
         int size = jellys[row].length;
         for (int c = 0; c < size; ++c) {
             JellyType data = jellys[row][c];
-            jellys[row][c] = TMP;
-            if (c != col) {
+            jellys[row][c] = TMP; // 先置空, 避免循环调用
+            if (c != col) { // 排除自己
                 data.clear(row, c, jellys);
             }
         }

@@ -6,6 +6,7 @@ import com.demo.http.service.Response;
 import com.demo.http.service.Service;
 import com.demo.repo.RepoContext;
 import com.demo.util.Log;
+import com.demo.util.SessionGenerator;
 
 /**
  * 通过数据库实现简单的分布式锁。 
@@ -19,7 +20,7 @@ public abstract class AbstractSessionService implements Service {
     @Override
     public Response service(Request req) {
         String sessionId = req.getParam("sessionId");
-        if (sessionId == null) {
+        if (sessionId == null || sessionId.length() != SessionGenerator.LENGTH) {
             return INVALID_PARAMS_RESP;
         }
         if (lock(sessionId)) {

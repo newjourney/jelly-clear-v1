@@ -8,12 +8,11 @@ import java.util.UUID;
  *
  */
 public class SessionGenerator {
+    
+    public static final int LENGTH = gen().length();
 
     public static String gen() {
         return UUID.randomUUID().toString().replace("-", "");
     }
     
-    public static void main(String[] args) {
-        System.out.println(gen().length());
-    }
 }
